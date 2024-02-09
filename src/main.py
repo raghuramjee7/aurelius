@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from models import model, connect
 
 app = FastAPI()
+
+model.Base.metadata.create_all(bind = connect.engine) 
 
 # CORS
 origins = [
